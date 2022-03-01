@@ -1,0 +1,26 @@
+This program scans across the position of the data from the bottom to the top with a user-defined window size. In this window all instances where the molecule appears are determined. If there are multiple contiguous visits, i.e. pauses then these are counted only is they are longer than the user-defined pause duration.
+
+The data from this analysis is in the bottom window and appears when 'plot' is clicked.
+
+The bottom window will display peaks, which correspond to the locations of the suspected pauses. Clicking on these peaks will insert a line in both graphs showing where they correspond. This can also be done automatically using the 'Analyze' button, but this will likely introduce extra lines because it estimates based on a sliding window. Lines can be creatd from either window and deleted using the right click.
+
+Data can be represented as a sum of lifetimes, average lifetime or number of pauses (my fave) using the rotating knob.
+
+As soon as 'Load new data' is clicked the data from the current analysis is saved and wiped from the app.
+
+Three files are created:
+
+Raw_data_filename.txt
+This contains all of the data from the plot window, the sum run length is in row 1, average in row 2, number of pauses row 3, any lines drawn in row 4 (shown as a 1), min and max x positions in row 5 col 1 and 2 respectively, pause duration row 6, window size row 7, and x position in row 8.
+
+Pause_duration_filename.txt
+This stores all of the pause durations identified using the lines either automatically or manually created. 
+
+All_pauses.txt
+This is one file stored for the whole diretory and allows for faster data aggregation. If you have multiple files in this directory the pause durations will be copied into this file at the end of the data already stored in this file.
+
+************
+
+Possible problems:
+
+If you have positional data that is either very large or very small in magnitude you should aim to rescale it into the range 10s to 100s. The program can potentially deal with any displacement but the window size range will need adjustment, I find it easier just to rescale the data going into the program, and then rescaling the results.
